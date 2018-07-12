@@ -25,6 +25,11 @@ function initMap() {
     position: bishan
   });
   
+     google.maps.event.addListener(hmarker, 'click', function() { 
+  infowindow.setContent( '<div><strong>'+ "Home" +'</strong></br>');
+  infowindow.open(map, this);
+  });
+  
   // creating an object for infoWindow
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);//accessing the PlaceService class to use the function nearbysearch with location values passed as parameters

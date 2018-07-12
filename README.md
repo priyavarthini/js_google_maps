@@ -1,4 +1,4 @@
-## * htts://priyavarthini.github.io 
+## *https://priyavarthini.github.io (https://priyavarthini.github.io)
 A Personal website for my projects
 
 Restaurants nearby Bishan(Home)

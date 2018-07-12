@@ -11,7 +11,7 @@ function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: bishan,
-    zoom: 17
+    zoom: 14
   });
   
 //icon for home loction

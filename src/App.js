@@ -52,6 +52,7 @@ var pos;
        //the current-location co-ordinates are passed to find the restaurants nearby
        infowindow = new google.maps.InfoWindow();
        var service = new google.maps.places.PlacesService(map);
+         service.nearbySearch({
        location: pos,
        radius: 500,
        type: ['restaurant']

@@ -4,16 +4,26 @@
 
 var map;
 var infowindow;
+var pos;
 
-//initializes a container for displaying the map with the location value using the constructor of Map class
-function initMap() {
-  var bishan = {lat: 1.346648, lng: 103.84991200000002};
+function find() {
 
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: bishan,
-    zoom: 16
-  });
-  
+ // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(show); 
+        } else {
+          window.alert("Browser doesn't support Geolocation")
+          }
+          function show(position){
+              pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+             map = new google.maps.Map(document.getElementById('map'), {
+    					center: pos,
+    					zoom: 16,
+              });  
+              
 //icon for home loction
   var hmarker = new google.maps.Marker({
     map: map,
@@ -22,14 +32,26 @@ function initMap() {
                   anchor: new google.maps.Point(10, 10),
                   scaledSize: new google.maps.Size(50, 50)
               },
-    position: bishan
+    position: pos
   });
   
-     google.maps.event.addListener(hmarker, 'click', function() { 
-  infowindow.setContent( '<div><strong>'+ "Home" +'</strong></br>');
-  infowindow.open(map, this);
-  });
+    infowindow = new google.maps.InfoWindow();
   
+     //google.maps.event.addListener(hmarker, 'click', function() { 
+ infowindow.setPosition(pos);
+  infowindow.setContent( '<div><strong>'+ "Your Location" +'</strong></br>');
+  infowindow.open(map);
+  }}
+function findR() {
+  // creating an object for infoWindow
+  if (pos === undefined) {window.alert("Couldn't get the current location, use default");
+  pos = {lat: 1.346648 , lng: 103.84991200}
+   map = new google.maps.Map(document.getElementById('map'), {
+    center: pos,
+    zoom: 15
+  });
+  }
+
   // creating an object for infoWindow
   infowindow = new google.maps.InfoWindow();
   var service = new google.maps.places.PlacesService(map);//accessing the PlaceService class to use the function nearbysearch with location values passed as parameters
@@ -39,7 +61,7 @@ function initMap() {
     type: ['restaurant']
   }, callback);
  
-}
+
 
 
 //The result contains an array of 20 restaurants located nearby home and the results are passed to callbackfunction to check for the status
@@ -71,4 +93,4 @@ function createMarker(place) {
   });
   
  
- }
+ }}

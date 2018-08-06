@@ -1,4 +1,4 @@
-## *https://priyavarthini.github.io/js_google_maps (https://priyavarthini.github.io)
+## *https://priyavarthini.github.io (https://priyavarthini.github.io)
 A Personal website for my projects
 
 Restaurants nearby Bishan(Home)
